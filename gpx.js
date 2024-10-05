@@ -221,14 +221,14 @@ L.GPX = L.FeatureGroup.extend({
     var _this = this;
     return this._info.times._points.map(
       function(p) { return _this._prepare_data_point(p, _this.m_to_km, null,
-        function(a, b) { return a.toFixed(2) + ' km, ' + b.toFixed(2) + ' ms'; });
+        function(a, b) { return _this._toFixed_helper(a, 2) + ' km, ' + _this._toFixed_helper(b, 2) + ' ms'; });
       });
   },
   get_times_data_imp: function() {
     var _this = this;
     return this._info.times._points.map(
       function(p) { return _this._prepare_data_point(p, _this.m_to_mi, null,
-        function(a, b) { return a.toFixed(2) + ' mi, ' + b.toFixed(2) + ' ms'; });
+        function(a, b) { return _this._toFixed_helper(a, 2) + ' mi, ' + _this._toFixed_helper(b, 2) + ' ms'; });
       });
   },
 
