@@ -217,6 +217,21 @@ L.GPX = L.FeatureGroup.extend({
   get_speed_max:          function() { return this.m_to_km(this._info.speed.max) * 3600; },
   get_speed_max_imp:      function() { return this.to_miles(this.get_speed_max()); },
 
+  get_times_data:         function() {
+    var _this = this;
+    return this._info.times._points.map(
+      function(p) { return _this._prepare_data_point(p, _this.m_to_km, null,
+        function(a, b) { return a.toFixed(2) + ' km, ' + b.toFixed(2) + ' ms'; });
+      });
+  },
+  get_times_data_imp: function() {
+    var _this = this;
+    return this._info.times._points.map(
+      function(p) { return _this._prepare_data_point(p, _this.m_to_mi, null,
+        function(a, b) { return a.toFixed(2) + ' mi, ' + b.toFixed(2) + ' ms'; });
+      });
+  },
+
   get_average_hr:         function() { return this._info.hr.avg; },
   get_average_temp:         function() { return this._info.atemp.avg; },
   get_average_cadence:         function() { return this._info.cad.avg; },
