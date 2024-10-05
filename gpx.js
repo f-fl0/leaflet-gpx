@@ -317,7 +317,8 @@ L.GPX = L.FeatureGroup.extend({
       hr: {avg: 0, _total: 0, _points: []},
       duration: {start: null, end: null, moving: 0, total: 0},
       atemp: {avg: 0, _total: 0, _points: []},
-      cad: {avg: 0, _total: 0, _points: []}
+      cad: {avg: 0, _total: 0, _points: []},
+      times: {_points: []}
     };
   },
 
@@ -602,6 +603,8 @@ L.GPX = L.FeatureGroup.extend({
       } else {
         this._info.elevation.loss += Math.abs(ele_diff);
       }
+
+      this._info.times._points.push([this._info.length, this._info.duration.total]);
 
       last = ll;
       coords.push(ll);
